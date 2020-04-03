@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import useUserInput from "./hooks/userInputHook";
+import useSearchable from "./hooks/searchableHook";
+import Language from "./types/Language";
+import "./App.css";
 
-function App() {
+const App: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  const [languages, setLanguages] = useState<Language[]>([]);
+
+  const searchText = useUserInput("");
+
+  useEffect(() => {
+    fetch("/languages.json")
+      .then(response => response.json())
+      .then(data => setLanguages(data))
+      .catch(err => console.log({ err }))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const searchableLanguages = useSearchable(languages, searchText.value, l => [
+    l.name
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <h2 className="text-center">Programming Languages Search App</h2>
+      <input
+        placeholder="Search languages here..."
+        type="text"
+        className="search-input"
+        {...searchText}
+      />
+
+      {loading ? (
+        <p className="text-center">Loading...</p>
+      ) : (
+        searchableLanguages.slice(0, 10).map(lang => (
+          <p className="text-center" key={lang.id}>
+            {lang.name}
+          </p>
+        ))
+      )}
     </div>
   );
-}
+};
 
 export default App;
