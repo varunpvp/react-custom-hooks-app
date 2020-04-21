@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-custom-hooks-app/static/css/main.370d1fef.chunk.css",
+    "main.js": "/react-custom-hooks-app/static/js/main.cf57ebca.chunk.js",
+    "main.js.map": "/react-custom-hooks-app/static/js/main.cf57ebca.chunk.js.map",
+    "runtime-main.js": "/react-custom-hooks-app/static/js/runtime-main.f354defe.js",
+    "runtime-main.js.map": "/react-custom-hooks-app/static/js/runtime-main.f354defe.js.map",
+    "static/js/2.f05fa4b7.chunk.js": "/react-custom-hooks-app/static/js/2.f05fa4b7.chunk.js",
+    "static/js/2.f05fa4b7.chunk.js.map": "/react-custom-hooks-app/static/js/2.f05fa4b7.chunk.js.map",
+    "index.html": "/react-custom-hooks-app/index.html",
+    "precache-manifest.f3d86d627003ecab05b0d2c28e0eec69.js": "/react-custom-hooks-app/precache-manifest.f3d86d627003ecab05b0d2c28e0eec69.js",
+    "service-worker.js": "/react-custom-hooks-app/service-worker.js",
+    "static/css/main.370d1fef.chunk.css.map": "/react-custom-hooks-app/static/css/main.370d1fef.chunk.css.map",
+    "static/js/2.f05fa4b7.chunk.js.LICENSE.txt": "/react-custom-hooks-app/static/js/2.f05fa4b7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f354defe.js",
+    "static/js/2.f05fa4b7.chunk.js",
+    "static/css/main.370d1fef.chunk.css",
+    "static/js/main.cf57ebca.chunk.js"
+  ]
+}
