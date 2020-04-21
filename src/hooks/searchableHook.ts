@@ -7,8 +7,8 @@ const useSearchable = <T>(
 ) => {
   return useMemo(() => {
     const regex = new RegExp(searchText, "i");
-    return data.filter(item =>
-      searchProps(item).reduce<boolean>((pv, cv) => pv || regex.test(cv), false)
+    return data.filter((item) =>
+      searchProps(item).some((sp) => regex.test(sp))
     );
   }, [data, searchText, searchProps]);
 };

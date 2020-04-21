@@ -1,47 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useUserInput from "./hooks/userInputHook";
 import useSearchable from "./hooks/searchableHook";
-import Language from "./types/Language";
+import useLanguages from "./hooks/languagesHook";
+
 import "./App.css";
 
 const App: React.FC = () => {
-  const [loading, setLoading] = useState(true);
-
-  const [languages, setLanguages] = useState<Language[]>([]);
-
   const searchText = useUserInput("");
 
-  useEffect(() => {
-    fetch("/languages.json")
-      .then(response => response.json())
-      .then(data => setLanguages(data))
-      .catch(err => console.log({ err }))
-      .finally(() => setLoading(false));
-  }, []);
+  const languages = useLanguages();
 
-  const searchableLanguages = useSearchable(languages, searchText.value, l => [
-    l.name
-  ]);
+  const searchableLanguages = useSearchable(
+    languages,
+    searchText.value,
+    (l) => [l.name]
+  );
 
   return (
     <div className="main">
-      <h2 className="text-center">Programming Languages Search App</h2>
+      <h2 className="text-center uppercase">Programming Languages</h2>
       <input
         placeholder="Search languages here..."
         type="text"
-        className="search-input"
+        className="search-input text-center"
         {...searchText}
       />
 
-      {loading ? (
-        <p className="text-center">Loading...</p>
-      ) : (
-        searchableLanguages.slice(0, 10).map(lang => (
-          <p className="text-center" key={lang.id}>
-            {lang.name}
-          </p>
-        ))
-      )}
+      {searchableLanguages.slice(0, 10).map((l) => (
+        <p className="text-center" key={l.id}>
+          {l.name}
+        </p>
+      ))}
     </div>
   );
 };
