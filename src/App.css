@@ -2,6 +2,11 @@
   margin-top: 1rem;
 }
 
+.link {
+  text-decoration: none;
+  color: black;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
