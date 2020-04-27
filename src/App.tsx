@@ -28,7 +28,16 @@ const App: React.FC = () => {
 
       {searchableLanguages.slice(0, 10).map((l) => (
         <p className="text-center" key={l.id}>
-          {l.name}
+          <a
+            className="link"
+            href={encodeURI(
+              `https://www.google.com/search?q=${l.name} programming language`
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {l.name}
+          </a>
         </p>
       ))}
     </div>
